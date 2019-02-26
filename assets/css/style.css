@@ -1,0 +1,55 @@
+#header {
+    text-align: center;
+    font-weight: bold;
+    padding: 30px;
+    margin: 20px;
+    font-size: 120px;
+}
+.fixed-header, .fixed-footer{
+    width: 100%;
+    position: fixed;        
+    background: #333;
+    padding: 10px 0;
+    color: #fff;
+}
+.fixed-header{
+    top: 0;
+}
+.fixed-footer{
+    bottom: 0;
+}
+body {
+    margin: 0;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.container {
+    width: 80%;
+}
+
+.contentBorder {
+    border: solid 2px black;
+}
+
+.underLine {
+    text-decoration: underline;
+}
+
+#wrapper {
+    width: 400px;
+    height: 650px;
+    margin: 0 auto;
+}
+
+#hangmancanvas {
+    border: 1px solid black;
+}
+
+.Char {
+    width: 30px;
+    height: 30px;
+    border-style: solid;
+    padding: 2px;
+    float: left;
+    margin: 2px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+
+<head>
+    <title>Hangman!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="C:\Users\Agra\desktop\word-guess-game\assets\css\style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="C:\Users\Agra\Desktop\attempt2\hangmanGame\assets\javascript\game.js"> </script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Created a container to contain header and 2 primary Divs. -->  
+            <header class=".fixed-header jumbotron header">                
+                    <h1 id="header">Fruity Hangman</h1>  
+            </header>
+            <div class="container jumbotron">
+                    <br>
+                <div id="holderDiv" class="row">
+                          
+                    <div id="imgDiv" class="col-xs-6"> 
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.RZqHb_2Fez96rL_hInFncwHaFj&pid=15.1&P=0&w=231&h=174" width=400 height=300>
+                    </div>
+                
+                        <!-- Gave this Div the id of "infoDiv". This will contain the 
+                        instructions, hidden word, number of guests remaining and letters guessed already.  -->
+                    <div id="infoDiv" class="col-xs-6">
+                        <div>
+                            <h2 id="instructions" class="underLine">Press Any Key To Get Started!</h2>
+                        </div>
+                        <div>
+                            <h2 id="wins" class="underLine">Wins:</h2>
+                        </div>
+                        <div>
+                            <!-- Created a h2 element with the id "currentWord". Created a p element with id "hiddenWord"-->
+                            <h2 id="currentWord" class="underLine">CURRENT WORD:</h2>
+                            <p id="currentWordDiv">
+                               
+                            </p>
+                        </div>
+                        <div>
+                            <h2  id="lives">Lives:</h2>
+                        </div>
+                        <div>
+                            <h2 class="underLine">Letters Guessed:</h2>
+                            <h3 id="lettersGuessed">_</h3>
+                        </div>
+                    </div>
+                </div>
+          </div>
+    <div class="container">
+        <p>HW-Week3-JavaScript: Word Guess Game</p>
+    </div>    
+    <div class="fixed-footer container">
+        <div class="container">Copyright &copy; Richard Mai</div>        
+    </div>
+
+
+
+</body>
+</html>
