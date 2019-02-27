@@ -3,28 +3,62 @@
 // 3. Use key events to listen for the letters that your players will type.
 
 // When this document is ready, the computer generates and chooses one of the words in its array.
-var hangman = {
-	randomWordArr: ["apple", "banana", "pear", "lychee", "strawberry", "pineapple", "watermelon", "honeydew"
-, "cantalope", "cherry"],
-	wins: 0,
-	guessesRemaining: 10,
-	lettersGuessed: 0,
-}
 
-$(document).ready(function (){
-	// created a variable to store the value of the array in hangman. 
-randomWordArray = hangman.randomWordArr;
-// choose a word from our array at random
-var randomWord = randomWordArray[Math.floor(Math.random() * randomWordArray.length)];
-console.log("randomWord= " + randomWord);
-// create variable for lives
-var lives = hangman.guessesRemaining;
-console.log(lives);
+var randomWordArr = ["apple", "banana", "pear", "lychee", "strawberry", "pineapple", "watermelon", "honeydew", "cantalope", "cherry"];
+var wins = 0;
+var currentWord;
+var lives = 10;
+var userInput = "";
+var dashes = ""
+$(document).ready(function() {
+$("#wins, #currentWord, #currentWordDiv, #lives, #lettersGuessed").empty();
+	var randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];	
+	console.log("randomWord= " + randomWord);
+// set currentWord equal to randomWord
+	currentWord = randomWord;
+	// create a for loop that will create multiple <button> dividers.
+
+	for (var i = 0; i < randomWord.length; i ++) {
+		
+		var hiddenChar = $("<button>"); 
+	
+		hiddenChar.addClass("char");
+
+		hiddenChar.attr('data-letter', randomWord[i]);
+
+		hiddenChar.attr('id', randomWord[i])
+		console.log(hiddenChar)
+		hiddenChar.text("_");
+
+		console.log("hiddenChar:" + hiddenChar.text)
+	
+		$("#currentWordDiv").append(hiddenChar);
+	
+		console.log("hiddenChar=" + hiddenChar.text);
+	};
 // create variable for wins
-var playerWins = hangman.wins;
-console.log("playerwins=" + playerWins);
+console.log("wins=" + wins);
+// create variable for lives 
 $("#lives").text("Lives Remaining:" + lives);
-$("#wins").text("Wins: " + playerWins);
+$("#wins").text("Wins: " + wins);
+});
+	if (lives > 0) {
+	$(document).on('keyup', function(event) {
+	userGuess = event.key;
+		for (var i = 0; i < currentWord.length; i++) {
+			if (userGuess === currentWord[i]) {
+				alert("You got a letter!");
+
+				
+			}
+		}
+	userGuess.toLowerCase();
+	lettersGuessed = "";
+	lettersGuessed += ", " + userGuess;
+	$("#lettersGuessed").append(lettersGuessed);
+
+	});
+};
 // create array for letters guessed. 
 /* 	idk about this for now ---->  for ( var i = 0; lives > 0; i++) {
 	var lettersGuessed = [];
@@ -34,23 +68,6 @@ $("#wins").text("Wins: " + playerWins);
 	$("#lettersGuessed").text(userInput[i]); 
 	}; */
 
-
-// create a for loop that will create multiple <button> dividers.
-for (var i = 0; i < randomWord.length; i ++) {
-
-	var hiddenChar = $("<button>"); 
-
-	hiddenChar.addClass("char");
-
-	hiddenChar.attr('data-letter', randomWord[i]);
-
-	hiddenChar.text("_");
-	console.log("hiddenChar:" + hiddenChar.text)
-
-	$("#currentWordDiv").append(hiddenChar); };
-
-	console.log("hiddenChar=" + hiddenChar.text);
-});
 
 // created a function that takes in an event and keypress as parameters 
 function checkGuess(event,isKeyPress){
@@ -76,8 +93,8 @@ function checkGuess(event,isKeyPress){
 //    * As the user guesses the correct letters, reveal them: `m a d o _  _ a`.
 
 // 7. Number of Guesses Remaining: (# of guesses remaining for the user).
-console.log(hangman.guessesRemaining) 
-$("#guessesRemaining").text("Guesses Remaining!:" + hangman.guessesRemaining );
+
+
 // 8. Letters Already Guessed: (Letters the user has guessed, displayed like `L Z Y H`).
 
 // 9. After the user wins/loses the game should automatically choose another word and make the user play it.

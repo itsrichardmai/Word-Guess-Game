@@ -44,12 +44,9 @@ body {
 #hangmancanvas {
     border: 1px solid black;
 }
-
-.Char {
-    width: 30px;
-    height: 30px;
-    border-style: solid;
-    padding: 2px;
-    float: left;
-    margin: 2px;
+.char {
+    border: 2px solid black;
+}
+.hidden {
+visibility: hidden;
 }
