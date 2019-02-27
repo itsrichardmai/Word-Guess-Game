@@ -26,11 +26,6 @@ console.log("playerwins=" + playerWins);
 $("#lives").text("Lives Remaining:" + lives);
 $("#wins").text("Wins: " + playerWins);
 // create array for letters guessed. 
-document.onkeyup = function(event) {
-	var userInput = $("#lettersGuessed");
-	 userInput.text = event.key;
-	 console.log("userinput=:" + userInput;)
-}
 /* 	idk about this for now ---->  for ( var i = 0; lives > 0; i++) {
 	var lettersGuessed = [];
 	var userInput = [];
