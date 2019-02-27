@@ -6,59 +6,73 @@
 
 var randomWordArr = ["apple", "banana", "pear", "lychee", "strawberry", "pineapple", "watermelon", "honeydew", "cantalope", "cherry"];
 var wins = 0;
-var currentWord;
+var currentWord = [];
 var lives = 10;
-var userInput = "";
+var userInput = [];
 var dashes = ""
+var newWord = [];
+
 $(document).ready(function() {
 $("#wins, #currentWord, #currentWordDiv, #lives, #lettersGuessed").empty();
-	var randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];	
-	console.log("randomWord= " + randomWord);
-// set currentWord equal to randomWord
-	currentWord = randomWord;
-	// create a for loop that will create multiple <button> dividers.
-
-	for (var i = 0; i < randomWord.length; i ++) {
-		
-		var hiddenChar = $("<button>"); 
+	var randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];
+	// we want to set the value stored in the variable newword to an array that will have the exact same length as currentWord	
+	 newWord = new Array(randomWord.length);
+	console.log("newWord.length:" + newWord.length);
 	
-		hiddenChar.addClass("char");
 
-		hiddenChar.attr('data-letter', randomWord[i]);
+	for (var i = 0; i < newWord.length; i++) {
+		newWord[i] = "_ "; 
 
-		hiddenChar.attr('id', randomWord[i])
-		console.log(hiddenChar)
-		hiddenChar.text("_");
-
-		console.log("hiddenChar:" + hiddenChar.text)
-	
-		$("#currentWordDiv").append(hiddenChar);
-	
-		console.log("hiddenChar=" + hiddenChar.text);
+		$("#currentWordDiv").append(" " + newWord[i])
+		currentWord.push(randomWord[i]);
+		/* var newDiv = $("<button>");
+		newDiv.addClass("char");
+		newDiv.attr('value', randomWord[i]);
+		newDiv.text(newWord[i])
+		$("#currentWordDiv").append(newDiv); */ 
+		// create a for loop that will create multiple <button> dividers.
+		// create variable for wins
+		console.log("wins=" + wins);
+		// create variable for lives 
+		$("#lives").text("Lives Remaining:" + lives);
+		$("#wins").text("Wins: " + wins);
+		console.log("console.log: currentWord " + currentWord[i])
 	};
-// create variable for wins
-console.log("wins=" + wins);
-// create variable for lives 
-$("#lives").text("Lives Remaining:" + lives);
-$("#wins").text("Wins: " + wins);
-});
-	if (lives > 0) {
-	$(document).on('keyup', function(event) {
-	userGuess = event.key;
-		for (var i = 0; i < currentWord.length; i++) {
-			if (userGuess === currentWord[i]) {
-				alert("You got a letter!");
-
-				
-			}
-		}
-	userGuess.toLowerCase();
-	lettersGuessed = "";
-	lettersGuessed += ", " + userGuess;
-	$("#lettersGuessed").append(lettersGuessed);
-
 	});
-};
+
+	if (lives > 0) {
+		document.addEventListener('DOMContentLoaded', () => {
+
+			document.addEventListener('keydown', event => {
+				const charList = 'abcdefghijklmnopqrstuvwxyz'
+				const key = event.key.toLowerCase();
+				var value = event.key.toLowerCase();
+
+				// we are only interested in the alphabetical characters in charList
+				if (charList.indexOf(key) === -1 ) {
+				return; }
+				else {
+					// this will check if the key that was hit is a key that is in our array!
+					console.log("key:" + key)
+					if (currentWord.indexOf(key) >= 0) {
+						for (var i = 0; i < newWord.length; i++) {
+							if (value === currentWord[i]) {
+							newWord[i] = value + " ";
+							$("currentWordDiv").append(newWord)
+						}
+						}
+						alert("you hit a key bro") 
+						}
+					}
+					});
+				});
+				
+			};
+		;
+	/* userGuess.toLowerCase();
+	if (typeof userGuess === 'string') {
+		lettersGuessed = "";
+		lettersGuessed += ", " + userGuess;};}; */ 
 // create array for letters guessed. 
 /* 	idk about this for now ---->  for ( var i = 0; lives > 0; i++) {
 	var lettersGuessed = [];
@@ -97,8 +111,35 @@ function checkGuess(event,isKeyPress){
 
 // 8. Letters Already Guessed: (Letters the user has guessed, displayed like `L Z Y H`).
 
+// check letter 
+function checkletter() {
+	var value = $(".char").value;
+	console.log(value);
+	value = value.toLowerCase(); 
+		for (var i = 0; i < newword.length; i++) {
+
+        if (value === randomword[i]) {
+            newword[i] = value + " ";
+            var status = true;
+        };
+};
+
 // 9. After the user wins/loses the game should automatically choose another word and make the user play it.
 
 
 
 // Create an Array that will hold multiple strings. 
+$('#instructions').text("you have" + " " + lives + " " + "tries " + "left");
+	var wongame;
+	for (var j = 0; j < currentWord.length; j++) {
+			if (currentWord[j] === "_ ") {
+				wongame = false;
+			}
+		}
+		if (wongame == true) {
+			alert("You win! Congratulations!!!!");
+			sortingComplete();
+			fireworks();
+	
+		}
+	}
